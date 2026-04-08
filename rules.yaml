@@ -1,0 +1,34 @@
+# 规则列表 (从上到下匹配，匹配到即生效)
+rules:
+  # 1. 局域网/本机 直连
+  # - DOMAIN-SUFFIX,local,DIRECT
+  # - IP-CIDR,192.168.0.0/16,DIRECT
+  # - IP-CIDR,10.0.0.0/8,DIRECT
+  # - IP-CIDR,172.16.0.0/12,DIRECT
+  # - IP-CIDR,127.0.0.0/8,DIRECT
+
+  # 2. 国内常见网站 直连
+  - DOMAIN-SUFFIX,grgbanking.com,DIRECT
+
+
+  # 3. 国外常见网站 走代理 (把 Proxy 改成你的节点组名)
+  # - DOMAIN-SUFFIX,google.com,Proxy
+  # - DOMAIN-SUFFIX,youtube.com,Proxy
+  # - DOMAIN-SUFFIX,twitter.com,Proxy
+  # - DOMAIN-SUFFIX,facebook.com,Proxy
+  # - DOMAIN-SUFFix,github.com,Proxy
+
+  # 4. 广告/恶意网站 拦截
+  # - DOMAIN-SUFFIX,ad.com,REJECT
+
+  # 5. 最终兜底规则 (必须放最后)
+  # - MATCH,DIRECT       # 其余全部直连
+  # - MATCH,Proxy      # 其余全部走代理
+
+
+# - 规则类型,匹配内容,动作(策略组)
+# 精确匹配域名	- DOMAIN,www.google.com,Proxy
+# 匹配后缀（最常用）	- DOMAIN-SUFFIX,com,Proxy
+# 包含关键词	- DOMAIN-KEYWORD,twitter,Proxy
+# 匹配 IP 段	- IP-CIDR,8.8.8.8/32,Proxy
+# 匹配所有流量（兜底）	- MATCH,DIRECT
