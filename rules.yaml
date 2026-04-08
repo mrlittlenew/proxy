@@ -8,7 +8,7 @@ rules:
   # - IP-CIDR,127.0.0.0/8,DIRECT
 
   # 2. 国内常见网站 直连
-  - DOMAIN-SUFFIX,grgbanking.com,DIRECT
+  - DOMAIN-SUFFIX,*.grgbanking.com,DIRECT
 
 
   # 3. 国外常见网站 走代理 (把 Proxy 改成你的节点组名)
